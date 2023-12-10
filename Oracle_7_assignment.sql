@@ -8,6 +8,7 @@ CREATE TABLE fake_data (
 );
 
 
+
 -- Create a loop for add(inserting) user.
 BEGIN
     FOR i IN 1..100000 LOOP
@@ -17,7 +18,9 @@ BEGIN
     COMMIT;
 END;
  
- 
+
+
+
  -- show our Table Size
 
 SELECT SUM(bytes) AS table_size
@@ -25,8 +28,10 @@ FROM user_segments
 WHERE segment_name = 'FAKE_DATA';
 
 
+-- show all data on Fake_date
 
 select * from fake_data;
+
 
 
 
@@ -34,11 +39,15 @@ select * from fake_data;
 -- Create an index 
 
 CREATE INDEX fake_index ON FAKE_DATA(name);
+
+
  
  -- Create an other index
  CREATE INDEX fake_index2 ON FAKE_DATA( address);
+
   
    CREATE INDEX fake_index3 ON FAKE_DATA( phone);
+
 
 --To calculate the size of the table
  SELECT segment_name, bytes
